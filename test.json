@@ -1,0 +1,5 @@
+[
+    { "type": "url", "value": "https://ects.example/d/PIXEL" },
+    { "type": "text", "lang": "en", "value": "PIXEL" },
+    { "type": "json", "value": { "duckId": "PIXEL", "v": 1 } }
+]
