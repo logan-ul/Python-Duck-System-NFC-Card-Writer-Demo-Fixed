@@ -8,14 +8,16 @@
         "body": {
             "head": "#f0d35f",
             "_id": "69a881b504f2a69eea6979d0",
-            "frontLeft": "#e9bc4f",
+            "frontLeft": "blue",
             "frontRight": "#f6d32d",
             "rearLeft": "#ffffff",
             "rearRight": "#ed333b"
         },
         "derpy": false,
         "bio": "biography",
-        "date": "2026-03-04T00:00:00.000Z",
+        "date": {
+            "$date": "2026-03-04T00:00:00Z"
+        },
         "approved": true,
         "stats": {
             "strength": 12,
