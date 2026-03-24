@@ -17,6 +17,10 @@ import time
 import os
 import duck
 from typing import List, Dict, Any
+import tkinter as t
+from PIL import Image, ImageTk 
+import requests
+import io
 
 from smartcard.System import readers
 from smartcard.Exceptions import CardConnectionException, NoCardException
@@ -120,7 +124,9 @@ def format_duck_record(duck_record) -> List[Dict[Any, Any]]:
 
 
 def main():
-    rlist = readers()
+    
+    
+    
     if not rlist:
         print("No PC/SC readers found.")
         return
@@ -164,7 +170,32 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    window = t.Tk()
+    window.title()
+
+    main_label = t.Label(window, text="NFC Duck Writer")
+    main_label.grid(row=0, column=0)
+
+    reader_frame = t.Frame(window)
+    reader_frame.grid(row=1, column=0)
+
+    rlist = readers()
+    image = Image.open("illustration-of-nfc-reader-vector.jpg")
+    image = image.resize((300, 200), Image.Resampling.LANCZOS)
+    photo = ImageTk.PhotoImage(image)
+    #photo_response = requests.get("https://static.vecteezy.com/system/resources/previews/068/405/892/non_2x/illustration-of-nfc-reader-vector.jpg")
+    #photo = Image.open(io.BytesIO(photo_response.content))
+    for i in range(len(rlist)):
+        individual_reader_frame = t.Frame(reader_frame)
+        individual_reader_frame.grid(row=0, column=i)
+        reader_image = t.Label(individual_reader_frame, image=photo)#ImageTk.PhotoImage(photo))
+        reader_image.grid(row=0, column=0)
+        reader_label = t.Label(individual_reader_frame, text=f"Reader {i+1}")
+        reader_label.grid(row=1, column=0)
+        
+
+    
+    window.mainloop()
 
 
 """
