@@ -69,14 +69,16 @@
         ],
         "body": {
             "head": "brown",
-            "frontLeft": "yellow",
-            "frontRight": "green",
+            "frontLeft": "green",
+            "frontRight": "yellow",
             "rearLeft": "purple",
             "rearRight": "red"
         },
         "derpy": false,
         "bio": "Cricket darts across the room and seems to notice everything that happens.",
-        "date": "2026-03-04T00:00:00.000Z",
+        "date": {
+            "$date": "2026-03-04T00:00:00Z"
+        },
         "approved": true,
         "stats": {
             "strength": 5,

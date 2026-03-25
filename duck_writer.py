@@ -64,7 +64,7 @@ def choose_duck_record() -> dict | Any:
     manager = duck.DuckManager()
     for i, d in enumerate(manager.data):
         print(i, json.dumps(d, indent=2))
-    idx = int(input("Enter the number for the duck you want to work with -> "))
+    idx = int(input("Enter the index for the duck you want to work with -> "))
     return manager.data[idx]
 
 
@@ -171,27 +171,33 @@ def main():
 
 if __name__ == "__main__":
     window = t.Tk()
-    window.title()
+    window.title("CMP Duck Writer")
 
     main_label = t.Label(window, text="NFC Duck Writer")
     main_label.grid(row=0, column=0)
 
     reader_frame = t.Frame(window)
     reader_frame.grid(row=1, column=0)
-
-    rlist = readers()
+    
     image = Image.open("illustration-of-nfc-reader-vector.jpg")
     image = image.resize((300, 200), Image.Resampling.LANCZOS)
     photo = ImageTk.PhotoImage(image)
-    #photo_response = requests.get("https://static.vecteezy.com/system/resources/previews/068/405/892/non_2x/illustration-of-nfc-reader-vector.jpg")
-    #photo = Image.open(io.BytesIO(photo_response.content))
-    for i in range(len(rlist)):
-        individual_reader_frame = t.Frame(reader_frame)
-        individual_reader_frame.grid(row=0, column=i)
-        reader_image = t.Label(individual_reader_frame, image=photo)#ImageTk.PhotoImage(photo))
-        reader_image.grid(row=0, column=0)
-        reader_label = t.Label(individual_reader_frame, text=f"Reader {i+1}")
-        reader_label.grid(row=1, column=0)
+    try:
+        rlist = readers()
+        #photo_response = requests.get("https://static.vecteezy.com/system/resources/previews/068/405/892/non_2x/illustration-of-nfc-reader-vector.jpg")
+        #photo = Image.open(io.BytesIO(photo_response.content))
+        for i in range(len(rlist)):
+            individual_reader_frame = t.Frame(reader_frame)
+            individual_reader_frame.grid(row=0, column=i)
+            reader_image = t.Label(individual_reader_frame, image=photo)#ImageTk.PhotoImage(photo))
+            reader_image.grid(row=0, column=0)
+            reader_label = t.Label(individual_reader_frame, text=f"Reader {i+1}")
+            reader_label.grid(row=1, column=0)
+    except:
+        error_label = t.Label(window, text="Smart card service could not start. Ensure you have an NFC reader plugged in.")
+        error_label.grid(row=2, column=0)
+    
+    
         
 
     
