@@ -24,7 +24,10 @@ import io
 
 from smartcard.System import readers
 from smartcard.Exceptions import CardConnectionException, NoCardException
+from smartcard.CardMonitoring import CardMonitor, CardObserver
+from smartcard.util import toHexString
 
+from duck_color_test import create_duck_image, apply_mask
 from nfc_writer_portal import (
     read_uid_hex,
     get_type2_data_area_capacity_bytes,
@@ -32,6 +35,41 @@ from nfc_writer_portal import (
     build_ndef_message,
     write_ndef_message_to_type2_tag,
 )
+
+class TkCardObserver(CardObserver):
+    def __init__(self, root, label):
+        self.root = root
+        self.label = label
+
+    def update(self, observable, actions):
+        (added_cards, removed_cards) = actions
+
+        for card in added_cards:
+            try:
+                connection = card.createConnection()
+                connection.connect()
+
+                GET_UID = [0xFF, 0xCA, 0x00, 0x00, 0x00]
+                uid_bytes, sw1, sw2 = connection.transmit(GET_UID)
+
+                uid = ''.join(f"{b:02X}" for b in uid_bytes)
+                print(uid)
+                
+
+
+                photo_response = requests.get("https://static.vecteezy.com/system/resources/previews/068/405/892/non_2x/illustration-of-nfc-reader-vector.jpg")
+                image = Image.alpha_composite(Image.open(io.BytesIO(photo_response.content)).resize((300, 200), Image.Resampling.LANCZOS).convert("RGBA"), create_duck_image(manager.duck_list[i]))
+                photo = ImageTk.PhotoImage(image)
+
+                # Push to Tkinter safely
+                self.root.after(0, lambda: self.label.config(image=photo))
+
+            except Exception as e:
+                self.root.after(0, lambda: self.label.config(text=f"Error: {e}"))
+
+        for card in removed_cards:
+            self.root.after(0, lambda: self.label.config(text="Card removed"))
+
 
 
 def list_readers() -> List[str]:
@@ -125,7 +163,7 @@ def format_duck_record(duck_record) -> List[Dict[Any, Any]]:
 
 def main():
     
-    
+    rlist = readers()
     
     if not rlist:
         print("No PC/SC readers found.")
@@ -170,6 +208,9 @@ def main():
 
 
 if __name__ == "__main__":
+    manager = duck.DuckManager()
+    manager.create_duck_list(True)
+
     window = t.Tk()
     window.title("CMP Duck Writer")
 
@@ -184,15 +225,19 @@ if __name__ == "__main__":
     photo = ImageTk.PhotoImage(image)
     try:
         rlist = readers()
-        #photo_response = requests.get("https://static.vecteezy.com/system/resources/previews/068/405/892/non_2x/illustration-of-nfc-reader-vector.jpg")
-        #photo = Image.open(io.BytesIO(photo_response.content))
+        photo_response = requests.get("https://static.vecteezy.com/system/resources/previews/068/405/892/non_2x/illustration-of-nfc-reader-vector.jpg")
+        photo = ImageTk.PhotoImage(Image.open(io.BytesIO(photo_response.content)).resize((300, 200), Image.Resampling.LANCZOS).convert("RGBA"))
         for i in range(len(rlist)):
+            
             individual_reader_frame = t.Frame(reader_frame)
             individual_reader_frame.grid(row=0, column=i)
             reader_image = t.Label(individual_reader_frame, image=photo)#ImageTk.PhotoImage(photo))
             reader_image.grid(row=0, column=0)
             reader_label = t.Label(individual_reader_frame, text=f"Reader {i+1}")
             reader_label.grid(row=1, column=0)
+            monitor = CardMonitor()
+            observer = TkCardObserver(individual_reader_frame, reader_image)
+            monitor.addObserver(observer)
     except:
         error_label = t.Label(window, text="Smart card service could not start. Ensure you have an NFC reader plugged in.")
         error_label.grid(row=2, column=0)

@@ -1,65 +1,5 @@
 [
     {
-        "_id": "69a8ea5053e250fdaf139d59",
-        "name": "Noodle",
-        "adjectives": [
-            "wiggly",
-            "playful",
-            "energetic"
-        ],
-        "body": {
-            "head": "green",
-            "frontLeft": "pink",
-            "frontRight": "yellow",
-            "rearLeft": "blue",
-            "rearRight": "brown"
-        },
-        "derpy": true,
-        "bio": "Noodle can never sit still and is always bouncing around looking for its next adventure.",
-        "date": {
-            "$date": "2026-03-04T00:00:00Z"
-        },
-        "approved": true,
-        "stats": {
-            "strength": 6,
-            "health": 8,
-            "focus": 3,
-            "intelligence": 5,
-            "kindness": 8
-        },
-        "__v": 0,
-        "assembler": "Emma Hayes"
-    },
-    {
-        "_id": "69a8ea5053e250fdaf139d5a",
-        "name": "Nimbus",
-        "adjectives": [
-            "calm",
-            "thoughtful",
-            "quiet"
-        ],
-        "body": {
-            "head": "purple",
-            "frontLeft": "blue",
-            "frontRight": "green",
-            "rearLeft": "yellow",
-            "rearRight": "pink"
-        },
-        "derpy": false,
-        "bio": "Nimbus prefers quiet corners and helps others slow down and think clearly.",
-        "date": "2026-03-04T00:00:00.000Z",
-        "approved": true,
-        "stats": {
-            "strength": 6,
-            "health": 7,
-            "focus": 9,
-            "intelligence": 8,
-            "kindness": 9
-        },
-        "__v": 0,
-        "assembler": "Isaac Turner"
-    },
-    {
         "_id": "69a8ea5053e250fdaf139d5b",
         "name": "Cricket",
         "adjectives": [
@@ -76,9 +16,7 @@
         },
         "derpy": false,
         "bio": "Cricket darts across the room and seems to notice everything that happens.",
-        "date": {
-            "$date": "2026-03-04T00:00:00Z"
-        },
+        "date": "2026-03-04T00:00:00Z",
         "approved": true,
         "stats": {
             "strength": 5,
@@ -89,64 +27,6 @@
         },
         "__v": 0,
         "assembler": "Tyler Brooks"
-    },
-    {
-        "_id": "69a8ea5053e250fdaf139d5c",
-        "name": "Waffles",
-        "adjectives": [
-            "cheerful",
-            "loyal",
-            "bright"
-        ],
-        "body": {
-            "head": "yellow",
-            "frontLeft": "pink",
-            "frontRight": "purple",
-            "rearLeft": "blue",
-            "rearRight": "green"
-        },
-        "derpy": false,
-        "bio": "Waffles brings excitement to every moment and encourages teammates.",
-        "date": "2026-03-04T00:00:00.000Z",
-        "approved": true,
-        "stats": {
-            "strength": 7,
-            "health": 7,
-            "focus": 6,
-            "intelligence": 6,
-            "kindness": 10
-        },
-        "__v": 0,
-        "assembler": "Grace Lin"
-    },
-    {
-        "_id": "69a8ea5053e250fdaf139d5d",
-        "name": "Biscuit",
-        "adjectives": [
-            "warm",
-            "friendly",
-            "relaxed"
-        ],
-        "body": {
-            "head": "brown",
-            "frontLeft": "red",
-            "frontRight": "yellow",
-            "rearLeft": "green",
-            "rearRight": "pink"
-        },
-        "derpy": true,
-        "bio": "Biscuit waddles happily through every situation and spreads calm energy.",
-        "date": "2026-03-04T00:00:00.000Z",
-        "approved": true,
-        "stats": {
-            "strength": 6,
-            "health": 9,
-            "focus": 4,
-            "intelligence": 5,
-            "kindness": 10
-        },
-        "__v": 0,
-        "assembler": "Daniel Ortiz"
     },
     {
         "_id": "69a8ea5053e250fdaf139d6e",
@@ -165,9 +45,7 @@
         },
         "derpy": true,
         "bio": "Sullivan James Sherwood IV is a duck of refined skill and quiet confidence. Known around the pond as both a gamer and a streamer, Sullivan has a knack for mastering any challenge that comes its way. Whether navigating complicated mazes of lily pads or coordinating with other ducks during intense pond-side competitions, Sullivan approaches every situation like a well-planned strategy game.\nWhen the action heats up, Sullivan naturally slips into streamer mode \u2014 narrating the moment, keeping the energy high, and somehow making even the most chaotic adventures look smooth and entertaining. Other ducks gather nearby just to watch and learn, because Sullivan has a way of turning everyday pond life into a highlight reel.\nBut what really sets Sullivan apart is being genuinely smart. Behind the cool gamer persona is a sharp mind that quickly figures out puzzles, solves problems, and helps teammates level up their own skills. If there\u2019s a tricky bug to fix, a path to optimize, or a clever plan to form, Sullivan James Sherwood IV is already three moves ahead.",
-        "date": {
-            "$date": "2026-03-04T00:00:00Z"
-        },
+        "date": "2026-03-04T00:00:00Z",
         "approved": true,
         "stats": {
             "strength": 5,
@@ -196,9 +74,7 @@
         },
         "derpy": false,
         "bio": "A very helpful and intelligent duck.",
-        "date": {
-            "$date": "2026-03-04T00:00:00Z"
-        },
+        "date": "2026-03-04T00:00:00Z",
         "approved": true,
         "stats": {
             "strength": 4,
@@ -227,9 +103,7 @@
         },
         "derpy": true,
         "bio": "Not a duck you want to hang around with.",
-        "date": {
-            "$date": "2026-03-04T00:00:00Z"
-        },
+        "date": "2026-03-04T00:00:00Z",
         "approved": true,
         "stats": {
             "strength": 5,
@@ -259,9 +133,7 @@
         },
         "derpy": false,
         "bio": "Mazecow is the kind of duck that walks into a pond like it already owns the place. A true sigma, Mazecow doesn\u2019t follow the flock\u2019s drama or noise \u2014 it moves on its own path, calmly observing everything while quietly solving problems no one else even noticed. When the other ducks panic about which way to swim, Mazecow has already mapped the maze of lily pads and is three turns ahead. \nDespite that independent vibe, Mazecow still has undeniable alpha male energy. Confident, bold, and never backing down from a challenge, Mazecow naturally ends up leading the group through tricky waters and weird classroom adventures alike. Other ducks might try to copy the swagger, but Mazecow makes it look effortless. \nAnd of course, there\u2019s the skibidy factor. Mazecow has a goofy side that shows up at the most unexpected times \u2014 dancing across the pond, making bizarre quacking noises, or pulling off chaotic moves that somehow still work perfectly. One moment Mazecow is calculating the smartest path forward, and the next it\u2019s doing something so ridiculous the whole flock can\u2019t stop laughing. Sigma mind. \nAlpha confidence. Skibidy chaos. That\u2019s Mazecow.",
-        "date": {
-            "$date": "2026-03-04T00:00:00Z"
-        },
+        "date": "2026-03-04T00:00:00Z",
         "approved": true,
         "stats": {
             "strength": 10,
@@ -275,33 +147,403 @@
         "assembler": "Isaac Trost"
     },
     {
-        "_id": "69c14a50e85bae62eb39f026",
-        "name": "bartholomew",
-        "assembler": "Logan UL",
+        "_id": "69de6926f15c46f170193418",
+        "name": "Sugar",
+        "assembler": "Holly Goodwill",
+        "adjectives": [
+            "Sweet",
+            "Brilliant",
+            "Adorable"
+        ],
+        "body": {
+            "head": "yellow",
+            "frontLeft": "pink",
+            "frontRight": "red",
+            "rearLeft": "yellow",
+            "rearRight": "pink",
+            "_id": "69de6926f15c46f170193419"
+        },
+        "derpy": false,
+        "bio": "Sugar is a sweet, kind, and extremely intelligent duck with a way of making everyone around her feel truly special. When she's not collecting shiny pebbles, bird watching, or splashing in puddles like they're her personal spa, she's busy making new friends and napping in the perfect sunbeam.",
+        "date": "2026-04-13T00:00:00Z",
+        "approved": true,
+        "stats": {
+            "strength": 2,
+            "health": 1,
+            "focus": 2,
+            "intelligence": 7,
+            "kindness": 8,
+            "_id": "69de6926f15c46f17019341a"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69ea1c0d02af4dc5df883d65",
+        "name": "testing brown",
+        "assembler": "Logan ULL",
+        "adjectives": [
+            "test",
+            "test",
+            "andtest"
+        ],
+        "body": {
+            "head": "brown",
+            "frontLeft": "brown",
+            "frontRight": "brown",
+            "rearLeft": "brown",
+            "rearRight": "brown",
+            "_id": "69f88cf9c77eefaa40c4cfea"
+        },
+        "derpy": false,
+        "bio": "This is a test duck to test the color brownie",
+        "date": "2026-04-25T00:00:00.000Z",
+        "approved": true,
+        "stats": {
+            "strength": 100,
+            "health": 100,
+            "focus": 100,
+            "intelligence": 100,
+            "kindness": 995,
+            "_id": "69f88cf9c77eefaa40c4cfeb"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69ea1c42e90d20318173ee57",
+        "name": "Sinist",
+        "assembler": "Glen Sheldon",
+        "adjectives": [
+            "Smart",
+            "patient",
+            "helpful"
+        ],
+        "body": {
+            "head": "brown",
+            "frontLeft": "green",
+            "frontRight": "brown",
+            "rearLeft": "pink",
+            "rearRight": "green",
+            "_id": "69ea1c42e90d20318173ee58"
+        },
+        "derpy": false,
+        "bio": "A duck with good patients and a smart mind will help too their full extent",
+        "date": "2026-04-23T00:00:00Z",
+        "approved": true,
+        "stats": {
+            "strength": 1,
+            "health": 2,
+            "focus": 7,
+            "intelligence": 10,
+            "kindness": 6,
+            "_id": "69ea1c42e90d20318173ee59"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69ea22c4e90d20318173ee5a",
+        "name": "18 wheeler",
+        "assembler": "Levi Finn",
         "adjectives": [
             "brave",
-            "faith",
-            "love"
+            "strong",
+            "fearless"
+        ],
+        "body": {
+            "head": "yellow",
+            "frontLeft": "green",
+            "frontRight": "blue",
+            "rearLeft": "purple",
+            "rearRight": "red",
+            "_id": "69ea22c4e90d20318173ee5b"
+        },
+        "derpy": true,
+        "bio": "he hates joe Swanson because he is the one that hit him with 1966 Mercury Comet full of conquesting communist clowns",
+        "date": "2026-04-23T00:00:00Z",
+        "approved": true,
+        "stats": {
+            "strength": 9,
+            "health": 8,
+            "focus": 1,
+            "intelligence": 1,
+            "kindness": 1,
+            "_id": "69ea22c4e90d20318173ee5c"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69ea5252e90d20318173ee5d",
+        "name": "Mr. Weird Head",
+        "assembler": "Preston Cessna",
+        "adjectives": [
+            "Stinky",
+            "Sleepy",
+            "Charismatic"
+        ],
+        "body": {
+            "head": "pink",
+            "frontLeft": "purple",
+            "frontRight": "red",
+            "rearLeft": "red",
+            "rearRight": "red",
+            "_id": "69ea5252e90d20318173ee5e"
+        },
+        "derpy": false,
+        "bio": "Was summoned from Jimmy Newtron's booger goop.",
+        "date": "2026-04-23T00:00:00Z",
+        "approved": true,
+        "stats": {
+            "strength": 4,
+            "health": 5,
+            "focus": 4,
+            "intelligence": 4,
+            "kindness": 3,
+            "_id": "69ea5252e90d20318173ee5f"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69f0f402e90d20318173ee60",
+        "name": "In 1453, the Ottoman Empire captured Constantinople after a 53-day siege, ending the Byzantine Empire",
+        "assembler": "Alex Cihon",
+        "adjectives": [
+            "Stupid",
+            "Multicolor",
+            "Despicable"
+        ],
+        "body": {
+            "head": "purple",
+            "frontLeft": "yellow",
+            "frontRight": "purple",
+            "rearLeft": "green",
+            "rearRight": "green",
+            "_id": "69f0f402e90d20318173ee61"
+        },
+        "derpy": false,
+        "bio": "i hate this creature",
+        "date": "2026-04-28T00:00:00Z",
+        "approved": true,
+        "stats": {
+            "strength": 3,
+            "health": 2,
+            "focus": 2,
+            "intelligence": 1,
+            "kindness": 3,
+            "_id": "69f0f402e90d20318173ee62"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69f0f66ce90d20318173ee63",
+        "name": "Omni-Man",
+        "assembler": "Jordan K",
+        "adjectives": [
+            "fast",
+            "smart",
+            "strong"
+        ],
+        "body": {
+            "head": "green",
+            "frontLeft": "purple",
+            "frontRight": "red",
+            "rearLeft": "blue",
+            "rearRight": "blue",
+            "_id": "69f0f66ce90d20318173ee64"
+        },
+        "derpy": false,
+        "bio": "A fast, smart, strong super duck that can defeat anyone. He is the strongest duck out there. \"Are you sure?\"",
+        "date": "2026-04-28T00:00:00Z",
+        "approved": false,
+        "stats": {
+            "strength": 5,
+            "health": 4,
+            "focus": 5,
+            "intelligence": 5,
+            "kindness": 1,
+            "_id": "69f0f66ce90d20318173ee65"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69f0fde6e90d20318173ee66",
+        "name": "Tony",
+        "assembler": "Tony",
+        "adjectives": [
+            "Tony",
+            "Toenail",
+            "Laser Eyes"
+        ],
+        "body": {
+            "head": "brown",
+            "frontLeft": "brown",
+            "frontRight": "brown",
+            "rearLeft": "brown",
+            "rearRight": "brown",
+            "_id": "69f0fde6e90d20318173ee67"
+        },
+        "derpy": true,
+        "bio": "Tony. Its just tony. Made in the image of Tony, its just tony. All it is is tony and it will never not be tony.",
+        "date": "2026-04-28T00:00:00Z",
+        "approved": true,
+        "stats": {
+            "strength": 0,
+            "health": 1,
+            "focus": 0,
+            "intelligence": 0,
+            "kindness": 0,
+            "_id": "69f0fde6e90d20318173ee68"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69f0ffd9e90d20318173ee69",
+        "name": "popo duck",
+        "assembler": "Keanu Crocker",
+        "adjectives": [
+            "fast",
+            "biased",
+            "ignorant"
         ],
         "body": {
             "head": "red",
-            "frontLeft": "yellow",
-            "frontRight": "yellow",
-            "rearLeft": "yellow",
-            "rearRight": "yellow",
-            "_id": "69c14a50e85bae62eb39f027"
+            "frontLeft": "red",
+            "frontRight": "blue",
+            "rearLeft": "red",
+            "rearRight": "blue",
+            "_id": "69f0ffd9e90d20318173ee6a"
         },
         "derpy": true,
-        "bio": "Bartholomew is a straightforward, sincere, and grounded individual who values honesty above all else, often speaking with a bluntness that reflects his genuine nature. He is thoughtful and observant, forming his beliefs through reflection rather than impulse, which gives him a quiet but unshakable confidence. Loyal and principled, he stays committed to what he believes in and to the people he trusts, even when it means facing hardship or danger. He isn\u2019t driven by recognition or status, but by a strong sense of purpose and integrity, and his resilience allows him to remain steady under pressure, making him the kind of person others can depend on when things truly matter.",
-        "date": "2026-03-23T00:00:00.000Z",
-        "approved": false,
+        "bio": "He hates trespassers who jump his fence onto his lawn, loves donuts and coffee, responds violently to any trespassers, he absolutely loves Trump, and is a very great fighter.",
+        "date": "2026-04-28T00:00:00Z",
+        "approved": true,
         "stats": {
             "strength": 5,
             "health": 5,
             "focus": 4,
+            "intelligence": 5,
+            "kindness": 1,
+            "_id": "69f0ffd9e90d20318173ee6b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69f21131e90d20318173ee6c",
+        "name": "Strawberry Sherbet",
+        "assembler": "Bryan Burwell",
+        "adjectives": [
+            "evil",
+            "villainous",
+            "malicious"
+        ],
+        "body": {
+            "head": "pink",
+            "frontLeft": "pink",
+            "frontRight": "pink",
+            "rearLeft": "pink",
+            "rearRight": "pink",
+            "_id": "69f21131e90d20318173ee6d"
+        },
+        "derpy": false,
+        "bio": "Strawberry Sherbet wants the world to BURN. She despises the universe as things are, and everything that is a part of it. She wishes to bend the universe entirely at her will, stopping at NOTHING to get what she wants.",
+        "date": "2026-04-29T00:00:00.000Z",
+        "approved": true,
+        "stats": {
+            "strength": 0,
+            "health": 4,
+            "focus": 7,
+            "intelligence": 9,
+            "kindness": 0,
+            "_id": "69f21131e90d20318173ee6e"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69f361e4e90d20318173ee6f",
+        "name": "Joffrey",
+        "assembler": "Draven heisler",
+        "adjectives": [
+            "intelligent",
+            "Weak",
+            "Kind"
+        ],
+        "body": {
+            "head": "brown",
+            "frontLeft": "purple",
+            "frontRight": "red",
+            "rearLeft": "pink",
+            "rearRight": "red",
+            "_id": "69f361e4e90d20318173ee70"
+        },
+        "derpy": true,
+        "bio": "He is a little derpy but that doesn't stop him from being smart. He doesn't work out often so he isn't very strong.",
+        "date": "2026-04-30T00:00:00.000Z",
+        "approved": true,
+        "stats": {
+            "strength": 1,
+            "health": 1,
+            "focus": 3,
+            "intelligence": 10,
+            "kindness": 5,
+            "_id": "69f361e4e90d20318173ee71"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69f8970ce90d20318173ee72",
+        "name": "The Jack of All Trades",
+        "assembler": "Joshua Miller",
+        "adjectives": [
+            "average",
+            "kind",
+            "easy-going"
+        ],
+        "body": {
+            "head": "pink",
+            "frontLeft": "green",
+            "frontRight": "brown",
+            "rearLeft": "purple",
+            "rearRight": "blue",
+            "_id": "69f897c54dd31bd6d2dbd063"
+        },
+        "derpy": false,
+        "bio": "An overall chill duck who loves all, that is at peace with ones true self. Good at most things but is the master of none. Just an average duck for the average day.",
+        "date": "2026-05-04T00:00:00.000Z",
+        "approved": true,
+        "stats": {
+            "strength": 4,
+            "health": 4,
+            "focus": 4,
             "intelligence": 4,
-            "kindness": 2,
-            "_id": "69c14a50e85bae62eb39f028"
+            "kindness": 4,
+            "_id": "69f897c54dd31bd6d2dbd064"
+        },
+        "__v": 0
+    },
+    {
+        "_id": "69f89cd7e90d20318173ee75",
+        "name": "Johnathan joestar",
+        "assembler": "bennett kargol",
+        "adjectives": [
+            "chill"
+        ],
+        "body": {
+            "head": "blue",
+            "frontLeft": "pink",
+            "frontRight": "pink",
+            "rearLeft": "brown",
+            "rearRight": "yellow",
+            "_id": "69f89cd7e90d20318173ee76"
+        },
+        "derpy": true,
+        "bio": "During his childhood, Jonathan was proud and mischievous, yet gentle. Despite already aspiring to be a \"true gentleman\",[5] Jonathan lacked manners and mostly behaved like a normal child. His mother, having died before he could remember her, and his fellow boys ostracizing him because of his status left Jonathan somewhat lonely.[15] While at first, Jonathan didn't have his future strength of will, Dio unwittingly became the catalyst of his growth by pushing him to the edge and humiliating his girlfriend Erina Pendleton.[16] However, he did have the kindness and courage to immediately jump to Erina's rescue against two bullies bigger than him despite not knowing her.[5]\n\nRegarding Jonathan as a character, Araki has stated that Jonathan was difficult for him to design.[17] He wanted to create a \"first Joestar\" that could function as a symbol of purity and dignity rather than a unique, fresh character. This is reflected in his goals and character, Jonathan strives to become a \"true gentleman.\"\u00a0He carries his Joestar name with pride, never betraying the code of conduct he has set for himself, and will treat any fellow human with respect unless they prove evil.\n\n\nJoJo is determined to rid the world of Dio's evil\nJonathan also possesses a fierce inner strength and the drive to face and overcome conflict, which Dio calls an \"explosive power\". That drive, fueled by his affection for his friends and loved ones, enabled him to overcome the direst situations, notably managing to save his wife Erina when their boat was overcome with zombies and he was fatally wounded.[18] Jonathan fights for what he believes in, and once he is committed to something, he won't back down until the deed is done.\u00a0During his journey to find a cure for his father's illness, he was ambushed by a band of misfit hoodlums. He did not so much as flinch as he grasped an assailant's knife within his hand, saying he had much more riding on the fight than merely four fingers.[19]\n\n\nExplaining his reason for going easy on Speedwagon\nAs a gentleman, Jonathan is also kind and positive. Jonathan has a mindset where he tries to imagine the consequences his actions would have on other people, even if they appear to be enemies.[20]\u00a0He is gentle and sympathetic, feeling pain even as he vanquishes a zombified policeman.\u00a0Despite his skill in fighting, he will never seriously harm a person without a valid reason. Even after everything Dio has done, Jonathan still considers him his brother, and sheds tears for him.[9] His courteous nature as well as his mental fortitude and ability to withstand fear and pain is the main reason Speedwagon decides to aid him on his journey. During his life, Jonathan has always had an impulse to save others, beginning with Erina, and ending with his thought of a nearby baby just as he was agonizing over Dio's attack.[4]\n\nYet Jonathan can feel righteous fury at the evilness of his foes and will conduct justice by vanquishing them. He admitted that his reason for fighting Dio wasn't out of duty for saving the world, but to avenge his loved ones that Dio had killed.[21] Moreover, he does not pity truly despicable individuals he is not familiar with such as Doobie.\n\nWith his courage and spirit, Jonathan sets a legacy as the first JoJo of the series.\nThis content comes from JoJo's Bizarre Encyclopedia (https://jojowiki.com) and must be attributed to its authors if you are using it on another wiki or web page, as specified in the license.",
+        "date": "2026-05-04T00:00:00.000Z",
+        "approved": false,
+        "stats": {
+            "strength": 9,
+            "health": 8,
+            "focus": 1,
+            "intelligence": 1,
+            "kindness": 1,
+            "_id": "69f89cd7e90d20318173ee77"
         },
         "__v": 0
     }

@@ -20,8 +20,8 @@ class DuckManager:
         self.data = data
         self.duck_list = []
 
-    def create_duck_list(self):
-        """Creates and returns a list of duck objects in the duck manager."""
+    def create_duck_list(self, approved=False):
+        """Creates and returns a list of duck objects in the duck manager. Accepts a boolean value, true if you only want approved ducks. """
         for duck in self.data:
             self.duck_list.append(Duck(duck))
         return self.duck_list
@@ -36,12 +36,9 @@ class DuckManager:
         return list(filter(lambda duck: duck.name.lower() == name.lower(), self.duck_list))
     
     def get_ducks_by_assembler(self, assembler: str):
-        """Accepts a string and returns the duck with the matching assembler, note this currently deos not work"""
+        """Accepts a string and returns a list of ducks with the matching assembler"""
         return list(filter(lambda duck: assembler.lower() in duck.assembler.lower(), self.duck_list))
 
-    def update_all_ducks(self):
-        for duck in self.duck_list:
-            duck.update_data()
 
         
 
@@ -78,36 +75,6 @@ class Duck:
     def __str__(self):
         return f"{self.name.title()}, owned by {self.assembler.title()}"
     
-    def update_data(self):
-        # Main fields
-        self.raw_data["_id"] = self.id
-        self.raw_data["name"] = self.name
-        self.raw_data["assember"] = self.assembler
-        self.raw_data["adjectives"] = self.adjectives
-        self.raw_data["derpy"] = self.derpy
-        self.raw_data["bio"] = self.bio
-        self.raw_data["date"] = self.date
-        self.raw_data["approved"] = self.approved
-        self.raw_data["__v"] = self.version
-
-        # Body fields
-        self.raw_data["body"]["head"] = self.head_color
-        self.raw_data["body"]["front1"] = self.front_left_color
-        self.raw_data["body"]["front2"] = self.front_right_color
-        self.raw_data["body"]["back1"] = self.rear_left_color
-        self.raw_data["body"]["back2"] = self.rear_right_color
-
-        # Stats fields
-        self.raw_data["stats"]["strength"] = self.strength
-        self.raw_data["stats"]["health"] = self.health
-        self.raw_data["stats"]["focus"] = self.focus
-        self.raw_data["stats"]["intelligence"] = self.intelligence
-        self.raw_data["stats"]["kindness"] = self.kindness
-
-        return self.raw_data
-    
-    def update_online_duck(self):
-        print(requests.patch(f"https://api.ducks.ects-cmp.com/ducks/{self.id}", self.update_data()))
 
 
 
@@ -117,10 +84,8 @@ if __name__ == "__main__":
     manager = DuckManager()
     for duck in manager.create_duck_list():
         print(duck)
-    duck1 = manager.get_duck_by_id("69a8ea5053e250fdaf139d6f")
+    duck1 = manager.get_ducks_by_assembler("Logan ULL")[0]
     print(duck1.raw_data)
     duck1.derpy = True
     print(duck1.raw_data)
-    print(duck1.update_data())
-    duck1.update_online_duck()
 
