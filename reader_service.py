@@ -5,7 +5,7 @@ from typing import Dict, Any, Optional
 
 import requests
 
-from nfc_portal import NfcPortalManager, run_simulator_input_loop, PortalState
+from nfc_writer_portal import NfcPortalManager, run_simulator_input_loop, PortalState
 
 
 DUCK_API_BASE = "https://api.ducks.ects-cmp.com/ducks"

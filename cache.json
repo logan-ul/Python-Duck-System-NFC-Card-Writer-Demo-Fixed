@@ -223,19 +223,19 @@
             "frontRight": "brown",
             "rearLeft": "pink",
             "rearRight": "green",
-            "_id": "69ea1c42e90d20318173ee58"
+            "_id": "69fca33205d39d13e4af736b"
         },
         "derpy": false,
         "bio": "A duck with good patients and a smart mind will help too their full extent",
-        "date": "2026-04-23T00:00:00Z",
+        "date": "2026-04-23T00:00:00.000Z",
         "approved": true,
         "stats": {
-            "strength": 1,
-            "health": 2,
+            "strength": 2,
+            "health": 4,
             "focus": 7,
             "intelligence": 10,
             "kindness": 6,
-            "_id": "69ea1c42e90d20318173ee59"
+            "_id": "69fca33205d39d13e4af736c"
         },
         "__v": 0
     },
@@ -352,7 +352,7 @@
         "derpy": false,
         "bio": "A fast, smart, strong super duck that can defeat anyone. He is the strongest duck out there. \"Are you sure?\"",
         "date": "2026-04-28T00:00:00Z",
-        "approved": false,
+        "approved": true,
         "stats": {
             "strength": 5,
             "health": 4,
@@ -536,7 +536,7 @@
         "derpy": true,
         "bio": "During his childhood, Jonathan was proud and mischievous, yet gentle. Despite already aspiring to be a \"true gentleman\",[5] Jonathan lacked manners and mostly behaved like a normal child. His mother, having died before he could remember her, and his fellow boys ostracizing him because of his status left Jonathan somewhat lonely.[15] While at first, Jonathan didn't have his future strength of will, Dio unwittingly became the catalyst of his growth by pushing him to the edge and humiliating his girlfriend Erina Pendleton.[16] However, he did have the kindness and courage to immediately jump to Erina's rescue against two bullies bigger than him despite not knowing her.[5]\n\nRegarding Jonathan as a character, Araki has stated that Jonathan was difficult for him to design.[17] He wanted to create a \"first Joestar\" that could function as a symbol of purity and dignity rather than a unique, fresh character. This is reflected in his goals and character, Jonathan strives to become a \"true gentleman.\"\u00a0He carries his Joestar name with pride, never betraying the code of conduct he has set for himself, and will treat any fellow human with respect unless they prove evil.\n\n\nJoJo is determined to rid the world of Dio's evil\nJonathan also possesses a fierce inner strength and the drive to face and overcome conflict, which Dio calls an \"explosive power\". That drive, fueled by his affection for his friends and loved ones, enabled him to overcome the direst situations, notably managing to save his wife Erina when their boat was overcome with zombies and he was fatally wounded.[18] Jonathan fights for what he believes in, and once he is committed to something, he won't back down until the deed is done.\u00a0During his journey to find a cure for his father's illness, he was ambushed by a band of misfit hoodlums. He did not so much as flinch as he grasped an assailant's knife within his hand, saying he had much more riding on the fight than merely four fingers.[19]\n\n\nExplaining his reason for going easy on Speedwagon\nAs a gentleman, Jonathan is also kind and positive. Jonathan has a mindset where he tries to imagine the consequences his actions would have on other people, even if they appear to be enemies.[20]\u00a0He is gentle and sympathetic, feeling pain even as he vanquishes a zombified policeman.\u00a0Despite his skill in fighting, he will never seriously harm a person without a valid reason. Even after everything Dio has done, Jonathan still considers him his brother, and sheds tears for him.[9] His courteous nature as well as his mental fortitude and ability to withstand fear and pain is the main reason Speedwagon decides to aid him on his journey. During his life, Jonathan has always had an impulse to save others, beginning with Erina, and ending with his thought of a nearby baby just as he was agonizing over Dio's attack.[4]\n\nYet Jonathan can feel righteous fury at the evilness of his foes and will conduct justice by vanquishing them. He admitted that his reason for fighting Dio wasn't out of duty for saving the world, but to avenge his loved ones that Dio had killed.[21] Moreover, he does not pity truly despicable individuals he is not familiar with such as Doobie.\n\nWith his courage and spirit, Jonathan sets a legacy as the first JoJo of the series.\nThis content comes from JoJo's Bizarre Encyclopedia (https://jojowiki.com) and must be attributed to its authors if you are using it on another wiki or web page, as specified in the license.",
         "date": "2026-05-04T00:00:00.000Z",
-        "approved": false,
+        "approved": true,
         "stats": {
             "strength": 9,
             "health": 8,

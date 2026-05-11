@@ -34,41 +34,9 @@ from nfc_writer_portal import (
     build_records_from_spec,
     build_ndef_message,
     write_ndef_message_to_type2_tag,
+    NfcPortalManager
 )
 
-class TkCardObserver(CardObserver):
-    def __init__(self, root, label):
-        self.root = root
-        self.label = label
-
-    def update(self, observable, actions):
-        (added_cards, removed_cards) = actions
-
-        for card in added_cards:
-            try:
-                connection = card.createConnection()
-                connection.connect()
-
-                GET_UID = [0xFF, 0xCA, 0x00, 0x00, 0x00]
-                uid_bytes, sw1, sw2 = connection.transmit(GET_UID)
-
-                uid = ''.join(f"{b:02X}" for b in uid_bytes)
-                print(uid)
-                
-
-
-                photo_response = requests.get("https://static.vecteezy.com/system/resources/previews/068/405/892/non_2x/illustration-of-nfc-reader-vector.jpg")
-                image = Image.alpha_composite(Image.open(io.BytesIO(photo_response.content)).resize((300, 200), Image.Resampling.LANCZOS).convert("RGBA"), create_duck_image(manager.duck_list[i]))
-                photo = ImageTk.PhotoImage(image)
-
-                # Push to Tkinter safely
-                self.root.after(0, lambda: self.label.config(image=photo))
-
-            except Exception as e:
-                self.root.after(0, lambda: self.label.config(text=f"Error: {e}"))
-
-        for card in removed_cards:
-            self.root.after(0, lambda: self.label.config(text="Card removed"))
 
 
 
@@ -207,6 +175,24 @@ def main():
     print("\nDone.")
 
 
+def on_tag_present(state):
+    print("\n=== TAG PRESENT ===")
+    print("Reader:", state.reader_name)
+    print("UID:", state.uid_hex)
+
+    for record in state.ndef_records:
+        print("Kind:", record.kind)
+        print("Text:", record.text_value)
+
+
+def on_tag_removed(state):
+    print("\n=== TAG REMOVED ===")
+    print("UID:", state.uid_hex)
+
+
+def on_state_changed(old_state, new_state):
+    print("\nState changed")
+
 if __name__ == "__main__":
     manager = duck.DuckManager()
     manager.create_duck_list(True)
@@ -235,9 +221,12 @@ if __name__ == "__main__":
             reader_image.grid(row=0, column=0)
             reader_label = t.Label(individual_reader_frame, text=f"Reader {i+1}")
             reader_label.grid(row=1, column=0)
-            monitor = CardMonitor()
-            observer = TkCardObserver(individual_reader_frame, reader_image)
-            monitor.addObserver(observer)
+            portal = NfcPortalManager(
+                on_tag_present=on_tag_present,
+                on_tag_removed=on_tag_removed,
+                on_state_changed=on_state_changed,
+                )
+            portal.start()
     except:
         error_label = t.Label(window, text="Smart card service could not start. Ensure you have an NFC reader plugged in.")
         error_label.grid(row=2, column=0)
