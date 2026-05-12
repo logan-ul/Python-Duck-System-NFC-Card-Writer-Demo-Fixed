@@ -174,6 +174,13 @@ def main():
 
     print("\nDone.")
 
+def update_reader_image(state):
+    for record in state.ndef_records:
+        id = record.text_value.split("/")[-1]
+        data = manager.get_duck_by_id(id)
+        print(data)
+
+
 
 def on_tag_present(state):
     print("\n=== TAG PRESENT ===")
@@ -222,7 +229,7 @@ if __name__ == "__main__":
             reader_label = t.Label(individual_reader_frame, text=f"Reader {i+1}")
             reader_label.grid(row=1, column=0)
             portal = NfcPortalManager(
-                on_tag_present=on_tag_present,
+                on_tag_present=lambda state: update_reader_image(state, ),
                 on_tag_removed=on_tag_removed,
                 on_state_changed=on_state_changed,
                 )
