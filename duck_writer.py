@@ -12,25 +12,22 @@ Example records files are shown at the bottom of this script.
 
 from __future__ import annotations
 
-import json
+
 import time
-import os
 import duck
 from typing import List, Dict, Any
 import tkinter as t
+from tkinter import ttk
 from PIL import Image, ImageTk 
 import requests
 import io
 
 from smartcard.System import readers
 from smartcard.Exceptions import CardConnectionException, NoCardException
-from smartcard.CardMonitoring import CardMonitor, CardObserver
-from smartcard.util import toHexString
 
-from duck_color_test import create_duck_image, apply_mask
+from duck_color_test import create_duck_image
 from nfc_writer_portal import (
     read_uid_hex,
-    get_type2_data_area_capacity_bytes,
     build_records_from_spec,
     build_ndef_message,
     write_ndef_message_to_type2_tag,
@@ -38,72 +35,18 @@ from nfc_writer_portal import (
 )
 
 
-
-
-def list_readers() -> List[str]:
-    return [str(r) for r in readers()]
-
-
-def pick_reader_index(reader_names: List[str]) -> int:
-    print("\nConnected readers:")
-    for i, name in enumerate(reader_names):
-        print(f"  [{i}] {name}")
-
-    while True:
-        s = input("Select reader index: ").strip()
-        if s.isdigit():
-            idx = int(s)
-            if 0 <= idx < len(reader_names):
-                return idx
-        print("Invalid selection. Try again.")
-
-
-def load_records_file(path: str) -> List[Dict[str, Any]]:
-    with open(path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    if not isinstance(data, list):
-        raise ValueError("Records file must be a JSON array (list).")
-    return data
-
-
-def choose_duck_record() -> dict | Any:
-    manager = duck.DuckManager()
-    for i, d in enumerate(manager.data):
-        print(i, json.dumps(d, indent=2))
-    idx = int(input("Enter the index for the duck you want to work with -> "))
-    return manager.data[idx]
-
-
-def pick_records_file() -> str:
-    """
-    Simple UX: user types a path.
-    Tip: keep a folder like ./records/ with a few presets.
-    """
-    while True:
-        path = input(
-            "Path to records JSON file (e.g., records/duck_url_text.json): ").strip().strip('"')
-        if not path:
-            print("Please enter a path.")
-            continue
-        if not os.path.exists(path):
-            print("File not found. Try again.")
-            continue
-        return path
-
-
 def wait_for_tag_on_reader(reader_obj, poll_seconds: float = 0.20):
     """
     Polls until a stable tag UID can be read.
     Returns (connection, uid_hex).
     """
-    print("\nTap/hold a tag on the reader... (Ctrl+C to quit)")
     while True:
         try:
             conn = reader_obj.createConnection()
             conn.connect()
             uid_hex = read_uid_hex(conn)
             if uid_hex:
-                return conn, uid_hex
+                return conn
         except (CardConnectionException, NoCardException):
             pass
 
@@ -119,86 +62,84 @@ def format_duck_record(duck_record) -> List[Dict[Any, Any]]:
     ]
 
     """
+    print(duck_record)
     data = []
     data.append(
-        {"type": "url", "value": f"https://api.ducks.ects-cmp.com/ducks/{duck_record['_id']}"})
-    data.append({"type": "text", "lang": "en", "value": duck_record["_id"]})
+        {"type": "url", "value": f"https://api.ducks.ects-cmp.com/ducks/{duck_record.id}"})
+    data.append({"type": "text", "lang": "en", "value": duck_record.id})
     data.append({"type": "json", "value": {
-                "_id": duck_record["_id"], "assembler": duck_record["assembler"], "name": duck_record["name"]}})
+                "_id": duck_record.id, "assembler": duck_record.assembler, "name": duck_record.name}})
 
     return data
 
 
-def main():
+def main(ridx):
     
     rlist = readers()
     
-    if not rlist:
-        print("No PC/SC readers found.")
-        return
-
-    reader_names = [str(r) for r in rlist]
-    ridx = pick_reader_index(reader_names)
     reader_obj = rlist[ridx]
 
-    duck_record = choose_duck_record()
+    duck_record = drop_down.get()
+    if len(duck_record) < 1:
+        message_label.config(text="Please pick a valid duck")
+        return
+    duck_record = manager.get_ducks_by_name(duck_record)[0]
     formatted = format_duck_record(duck_record)
 
-    # records_path = pick_records_file()
-    # spec = load_records_file(records_path)
-    spec = formatted
-    # Build records + message
-    record_bytes_list = build_records_from_spec(spec)
+    record_bytes_list = build_records_from_spec(formatted)
     ndef_message = build_ndef_message(record_bytes_list)
 
-    # Wait for a tag
-    conn, uid_hex = wait_for_tag_on_reader(reader_obj)
-    print(f"\nDetected tag UID: {uid_hex}")
 
-    # Show capacity
+    portal.stop()
     try:
-        cap = get_type2_data_area_capacity_bytes(conn)
-        print(f"Tag data area capacity (from CC): {cap} bytes")
-    except Exception as e:
-        print(f"WARNING: Could not read capacity from CC: {e}")
-        print("Attempting to write anyway (may fail).")
+        conn = None
 
-    # Write
-    try:
+        for attempt in range(10):
+            try:
+                conn = reader_obj.createConnection()
+                conn.connect()
+                break
+
+            except (NoCardException, CardConnectionException):
+                conn = None
+                time.sleep(0.25)
+
+        if conn is None:
+            raise RuntimeError("Could not reconnect to tag.")
+
         write_ndef_message_to_type2_tag(
-            conn, ndef_message, data_area_start_page=4, pad_with_zeros=False)
-        print("✅ Write successful.")
-        print(f"Wrote records {json.dumps(spec)}")
+            conn,
+            ndef_message,
+            data_area_start_page=4,
+            pad_with_zeros=False
+        )
+
+        message_label.config(text="Successful write!")
+
     except Exception as e:
-        print(f"❌ Write failed: {e}")
+        print(e)
+        message_label.config(text=f"Write Failed: {e}")
 
-    print("\nDone.")
+    finally:
+        portal.start()
 
-def update_reader_image(state):
+def on_duck_added(state, photo_response, reader_image):
     for record in state.ndef_records:
         id = record.text_value.split("/")[-1]
-        data = manager.get_duck_by_id(id)
-        print(data)
+        duck = manager.get_duck_by_id(id)
+        image = Image.alpha_composite(Image.open(io.BytesIO(photo_response.content)).resize((300, 200), Image.Resampling.LANCZOS).convert("RGBA"), create_duck_image(duck))
+        image = ImageTk.PhotoImage(image)
+        global photos
+        photos.append(image)
+        reader_image.config(image=image)
 
 
 
-def on_tag_present(state):
-    print("\n=== TAG PRESENT ===")
-    print("Reader:", state.reader_name)
-    print("UID:", state.uid_hex)
-
-    for record in state.ndef_records:
-        print("Kind:", record.kind)
-        print("Text:", record.text_value)
+def on_duck_removed(reader_image):
+    reader_image.config(image=photos[0])
 
 
-def on_tag_removed(state):
-    print("\n=== TAG REMOVED ===")
-    print("UID:", state.uid_hex)
 
-
-def on_state_changed(old_state, new_state):
-    print("\nState changed")
 
 if __name__ == "__main__":
     manager = duck.DuckManager()
@@ -212,7 +153,11 @@ if __name__ == "__main__":
 
     reader_frame = t.Frame(window)
     reader_frame.grid(row=1, column=0)
-    
+
+    message_label = t.Label(window, text="")
+    message_label.grid(row=2, column=0)
+
+    photos = []
     image = Image.open("illustration-of-nfc-reader-vector.jpg")
     image = image.resize((300, 200), Image.Resampling.LANCZOS)
     photo = ImageTk.PhotoImage(image)
@@ -220,23 +165,27 @@ if __name__ == "__main__":
         rlist = readers()
         photo_response = requests.get("https://static.vecteezy.com/system/resources/previews/068/405/892/non_2x/illustration-of-nfc-reader-vector.jpg")
         photo = ImageTk.PhotoImage(Image.open(io.BytesIO(photo_response.content)).resize((300, 200), Image.Resampling.LANCZOS).convert("RGBA"))
+        photos.append(photo)
         for i in range(len(rlist)):
             
             individual_reader_frame = t.Frame(reader_frame)
             individual_reader_frame.grid(row=0, column=i)
-            reader_image = t.Label(individual_reader_frame, image=photo)#ImageTk.PhotoImage(photo))
+            reader_image = t.Label(individual_reader_frame, image=photo)
             reader_image.grid(row=0, column=0)
             reader_label = t.Label(individual_reader_frame, text=f"Reader {i+1}")
             reader_label.grid(row=1, column=0)
+            reader_button = t.Button(individual_reader_frame, text="Update this one", command=lambda:main(i))
+            reader_button.grid(row=2, column=0)
             portal = NfcPortalManager(
-                on_tag_present=lambda state: update_reader_image(state, ),
-                on_tag_removed=on_tag_removed,
-                on_state_changed=on_state_changed,
+                on_tag_present=lambda state: on_duck_added(state, photo_response, reader_image),
+                on_tag_removed=lambda state: on_duck_removed(reader_image),
+                on_state_changed=lambda old_state, new_state: on_duck_added(new_state, photo_response, reader_image),
                 )
             portal.start()
+        drop_down = ttk.Combobox(window, values=[duck.name for duck in manager.duck_list], state="readonly")
+        drop_down.grid(row=3, column=0, columnspan=2)
     except:
-        error_label = t.Label(window, text="Smart card service could not start. Ensure you have an NFC reader plugged in.")
-        error_label.grid(row=2, column=0)
+        message_label.config(text="Smart card service could not start. Ensure you have an NFC reader plugged in.")
     
     
         
